@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>方法与事件绑定</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ number }}</h1>
+      <div>
+        <button v-on:click="countUp">Count up</button>
+      </div>
+      <div>
+        <button @click="countDown">Count down</button>
+      </div>
+    </div>
+  </body>
+  <!-- 引入Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    // 描述这个Vue实例会⽤到的数据
+    new Vue({
+      // 创建实例并挂到id为app的DOM
+      el: "#app",
+      data: function () {
+        return {
+          number: 0,
+        };
+      },
+      methods: {
+        countUp: function () {
+          this.number++;
+        },
+        countDown: function () {
+          this.number--;
+        },
+      },
+    });
+  </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>条件渲染</title>
+    <style>
+      .has-border {
+        border: 3px solid green;
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ number }}</h1>
+      <div v-if="number < 3">v-if: The number is less than 3</div>
+      <div v-show="number < 5">v-show: The number is less than 5</div>
+      <button @click="count">Click to count</button>
+    </div>
+  </body>
+  <!-- 引入Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    // 描述这个Vue实例会⽤到的数据
+    new Vue({
+      // 创建实例并挂到id为app的DOM
+      el: "#app",
+      data: function () {
+        return {
+          number: 0,
+        };
+      },
+      methods: {
+        count: function () {
+          this.number++;
+        },
+      },
+    });
+  </script>
+</html>

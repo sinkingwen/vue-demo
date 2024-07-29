@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>循环渲染</title>
+    <style>
+      .has-border {
+        border: 3px solid green;
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="item in list">{{ item }}</li>
+      </ul>
+      <hr />
+      <ul>
+        <li v-for="(value, key) in pairs">
+          <span>{{ key }}</span>:
+          <span>{{ value }}</span>
+        </li>
+      </ul>
+      <hr />
+      <ul>
+        <li v-for="(value, key, index) in pairs" :key="index">
+          <span>{{ index }}</span> - <span>{{ key }}</span>:
+          <span>{{ value }}</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <!-- 引入Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    // 描述这个Vue实例会⽤到的数据
+    new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          list: [1, 2, 3],
+          pairs: {
+            Tom: 20,
+            Jack: 30,
+          },
+          number: 1,
+        };
+      },
+      methods: {
+        addNumber: function () {
+          this.list.push(this.number);
+          this.number++;
+        },
+      },
+    });
+  </script>
+</html>

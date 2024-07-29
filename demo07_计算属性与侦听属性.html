@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>计算属性与侦听属性</title>
+    <style>
+      .has-border {
+        border: 3px solid green;
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>Original: {{ message }}</div>
+      <div>Reversed: {{ reversedMessage }}</div>
+      <div>
+        <input type="text" v-model="message" />
+      </div>
+      <div>
+        <button @click="doubleMessage">Double Message</button>
+      </div>
+    </div>
+  </body>
+  <!-- 引入Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    // 描述这个Vue实例会⽤到的数据
+    new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          message: "Hello World",
+        };
+      },
+      methods: {
+        doubleMessage: function () {
+          this.message += this.message;
+        },
+      },
+      computed: {
+        reversedMessage: function () {
+          return this.message.split("").reverse().join("");
+        },
+      },
+      watch: {
+        message: function () {
+          alert("message is changed");
+        },
+      },
+    });
+  </script>
+</html>
